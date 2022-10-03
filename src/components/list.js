@@ -1,21 +1,19 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function ListAllCSVFiles() {
-  const alertClicked = () => {
-    alert('You clicked the third ListGroupItem');
-  };
+function ListAllCSVFiles(props) {
 
   return (
-    <ListGroup defaultActiveKey="#link1" style={{marginTop: '20px'}}>
-      <ListGroup.Item action href="#link1">
-        Link 1
-      </ListGroup.Item>
-      <ListGroup.Item action href="#link2" disabled>
-        Link 2
-      </ListGroup.Item>
-      <ListGroup.Item action onClick={alertClicked}>
-        This one is a button
-      </ListGroup.Item>
+    <ListGroup style={{marginTop: '20px'}}>
+      {
+        !!props?.files?.files && props.files.files.map(function(name, index){
+          return(
+            <ListGroup.Item key={index} action href={name}>
+              {name}
+            </ListGroup.Item>
+          )
+        })
+      }
+      
     </ListGroup>
   );
 }

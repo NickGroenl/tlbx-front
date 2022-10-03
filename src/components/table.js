@@ -1,7 +1,8 @@
 import Table from 'react-bootstrap/Table';
 
-function TableCSVFiles() {
-  return (
+function TableCSVFiles(props) {
+  console.log(props);
+    return (
     <Table striped bordered hover style={{marginTop: '20px'}}>
       <thead> 
         <tr>
@@ -12,23 +13,17 @@ function TableCSVFiles() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {!!props?.files.length > 0 && props.files.map(function(array, index){
+          return (
+            <tr key={index}>
+              {!!array?.file && <td>{array.file}</td>}
+              {!!array?.text && <td>{array.text}</td>}
+              {!!array?.number && <td>{array.number}</td>}
+              {!!array?.hex && <td>{array.hex}</td>}
+            </tr>
+          )
+        })}
+        
       </tbody>
     </Table>
   );

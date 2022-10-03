@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useSelector, useDispatch} from 'react-redux';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,17 +6,17 @@ import {
 } from "react-router-dom";
 
 import Home from './routes/home';
+import CsvData from './routes/csvData';
 
 
 function App() {
-  const filess = useSelector((state) => state.files);
-  const dispatch = useDispatch();
-  console.log(filess);
+
   return (
     <div className="App">
       <Router>
           <Routes>
-          <Route path='/' element={<Home/>} />
+            <Route path="/:id" element={<CsvData/>} />
+            <Route path='/' element={<Home/>} />
           </Routes>
       </Router>
     </div>
