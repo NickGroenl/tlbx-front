@@ -1,19 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import ListAllCSVFiles from './components/list';
-import TableCSVFiles from './components/table';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Home from './routes/home';
+
+
 function App() {
+  const filess = useSelector((state) => state.files);
+  const dispatch = useDispatch();
+  console.log(filess);
   return (
     <div className="App">
-      <Navbar  variant="dark" bg="danger">
-        <Navbar.Brand>React Test App</Navbar.Brand>
-      </Navbar>
-      <Container>
-        <ListAllCSVFiles/>
-        <TableCSVFiles/>
-      </Container>
+      <Router>
+          <Routes>
+          <Route path='/' element={<Home/>} />
+          </Routes>
+      </Router>
     </div>
+    
   );
 }
 
