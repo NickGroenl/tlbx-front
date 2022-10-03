@@ -1,9 +1,8 @@
 import Table from 'react-bootstrap/Table';
 
 function TableCSVFiles(props) {
-  console.log(props);
     return (
-    <Table striped bordered hover style={{marginTop: '20px'}}>
+    <Table data-testid="table" striped bordered hover style={{marginTop: '20px'}}>
       <thead> 
         <tr>
           <th>Filename</th>

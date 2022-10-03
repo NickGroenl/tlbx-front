@@ -1,27 +1,22 @@
-import App from './'
-import { render } from '@testing-library/react'
-let mockIsLoggedIn = false
-jest.mock('../hooks/use-auth', () => {
-    return jest.fn(() => ({
-       isLoggedIn: mockIsLoggedIn
-    }))
+import { render, screen } from '@testing-library/react'
+import App from './App'
+import ListAllCSVFiles from './components/list'
+import TableCSVFiles from './components/table'
+
+
+import '@testing-library/jest-dom'
+
+describe('Print list data', () => {
+
+  it('if data print in the list', () => {
+    const dcmt = render(<ListAllCSVFiles files={{files: ["test9.csv", "test2.csv"]}}/>);
+    expect(dcmt)
+  })
 })
-test('can show logged in message', () => {
-    mockIsLoggedIn = true
-    const { getByText } = render(<App/>)
-    expect(getByText('Welcome')).toBeTruthy()
-})
+describe('Print table data', () => {
 
-
-// SignOut.tsx
-const SignOut = () => {
-    const { signOut } = useAuth()
-    return (
-        <Button data-testid='sign-out' onClick={() => signOut()}>
-           Sign Out
-        </Button>
-    )
-}
-
-
-
+    it('if data print in the table', () => {
+      const dcmt = render(<TableCSVFiles files={[{name: "test9.csv", hex: "asdsadasd"}]}/>);
+      expect(dcmt)
+    })
+  })
